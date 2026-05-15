@@ -10,15 +10,16 @@
   <meta property="og:title" content="Witamy w BeautyRise – Zanim podpiszesz umowę">
   <meta property="og:description" content="BeautyRise - agencja marketingowa dla salonów beauty i klinik estetycznych.">
   <meta property="og:image" content="https://framerusercontent.com/images/BxzYf4O0aEi9N5E3v0OvC9gGThQ.jpg">
+  <meta name="theme-color" content="#000000">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://calendly.com">
   <link rel="dns-prefetch" href="https://assets.calendly.com">
   <link rel="dns-prefetch" href="https://calendly.com">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,400&display=swap" rel="stylesheet">
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -666,13 +667,14 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      transition: opacity 0.8s ease;
+      will-change: opacity;
+      transition: opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1);
     }
     .stages-bg--1 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.68) 55%, rgba(0,0,0,0.52) 100%), url('etap1.webp'); background-color: #0a0a2a; }
     .stages-bg--2 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.68) 55%, rgba(0,0,0,0.52) 100%), url('etap2.webp'); background-color: #2a0a00; }
     .stages-bg--3 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.68) 55%, rgba(0,0,0,0.52) 100%), url('etap3.webp'); background-color: #001a0a; }
     .stages-bg.is-active { opacity: 1; }
-    .stages-bg.was-active { opacity: 0; transition: opacity 0.5s ease; }
+    .stages-bg.was-active { opacity: 0; transition: opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1); }
     .stages-content {
       position: relative;
       z-index: 2;
@@ -757,7 +759,7 @@
       top: 0; left: 0;
       opacity: 0;
       transform: translateY(16px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transition: opacity 0.45s cubic-bezier(0.33, 1, 0.68, 1), transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
       pointer-events: none;
     }
     .stages-desc.is-active {
@@ -1243,7 +1245,7 @@
       entries.forEach(function(e) {
         if (e.isIntersecting) { e.target.classList.add('on'); _fi.unobserve(e.target); }
       });
-    }, { rootMargin: '0px 0px -18% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
     document.querySelectorAll('.fi').forEach(function(el) { _fi.observe(el); });
   </script>
 
@@ -1255,10 +1257,11 @@
     var isTouch = window.matchMedia('(pointer: coarse)').matches;
     if (!isTouch) try {
       var lenis = new Lenis({
-        duration: 1.6,
+        duration: 1.2,
         easing: function(t){ return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); },
         smoothWheel: true,
-        wheelMultiplier: 1.0
+        wheelMultiplier: 0.9,
+        touchMultiplier: 0
       });
       window._lenis = lenis;
       function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
@@ -1305,6 +1308,7 @@
       }
     }
   </script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"></script>
 
 </body>
 </html>
