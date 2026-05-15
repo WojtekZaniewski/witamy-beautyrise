@@ -706,6 +706,63 @@
     }
     .stages-card--active .stages-card__desc { color: rgba(0,0,0,0.55); }
 
+    /* ── STAGES DESCRIPTIONS ── */
+    .stages-descs {
+      position: relative;
+      flex: 1;
+      max-width: 600px;
+      margin-top: 32px;
+    }
+    .stages-desc {
+      position: absolute;
+      top: 0; left: 0;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+    .stages-desc.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      position: relative;
+    }
+    .stages-desc__title {
+      font-size: 20px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .stages-desc__situation {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      margin-bottom: 16px;
+      max-width: 480px;
+    }
+    .stages-desc__goals {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .stages-desc__goals li {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .stages-desc__goals li::before {
+      content: "→";
+      color: #ff751f;
+      flex-shrink: 0;
+      font-size: 12px;
+      margin-top: 1px;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .problem-grid, .feature-inner, .feature-inner--rev,
@@ -733,6 +790,8 @@
       .stages-content { padding: 48px 20px 32px; }
       .stages-cards { flex-direction: column; gap: 10px; align-self: stretch; }
       .stages-card { width: auto; }
+      .stages-descs { max-width: 100%; }
+      .stages-desc__situation { display: none; }
     }
   </style>
 </head>
@@ -796,18 +855,52 @@
       <div class="stages-content">
         <span class="stages-label">Etapy współpracy</span>
         <h2 class="stages-heading">Trzy kroki do <em>pełnego grafiku.</em></h2>
+
+        <div class="stages-descs">
+          <div class="stages-desc is-active" data-stage="0">
+            <h3 class="stages-desc__title">Lokalny salon, jedno stanowisko</h3>
+            <p class="stages-desc__situation">Jeden fotel, jedna osoba. Najczęściej właścicielka pracuje sama. Klienci przychodzą z polecenia sąsiadek. Kalendarz albo świeci pustkami, albo jest tak zapchany, że nie ma kiedy odetchnąć. Cała firma to jedna para rąk i jej grafik.</p>
+            <ul class="stages-desc__goals">
+              <li>Wyjść z trybu "wszystko na mnie": cennik, zabiegi i zapisy online zamiast zeszytu i Messengera</li>
+              <li>Być widoczną w okolicy: profil Google, 30+ opinii, regularna obecność w social mediach</li>
+              <li>Pierwsze źródła nowych klientów: lokalna reklama i program poleceń</li>
+              <li>Przygotowanie na pierwszego pracownika: kogo szukasz, jak go wdrożysz, ile płacisz</li>
+            </ul>
+          </div>
+          <div class="stages-desc" data-stage="1">
+            <h3 class="stages-desc__title">Klinika z zespołem, certyfikaty, dobry sprzęt</h3>
+            <p class="stages-desc__situation">Jeden lokal, kilka osób w zespole, dobry sprzęt, dyplomy na ścianie. Klienci są, terminarz pełny. Ale właścicielka dalej stoi przy fotelu, bo "bez niej jakość spada". Cała marka opiera się na jej nazwisku. Liczby siedzą w głowie, nie w tabelce.</p>
+            <ul class="stages-desc__goals">
+              <li>Zejść z fotela: większość zabiegów robi zespół z gwarancją tej samej jakości</li>
+              <li>Marka silniejsza niż nazwisko właścicielki: content, kilka twarzy z zespołu, własny styl wizualny</li>
+              <li>Zatrzymać klienta na lata: pakiety, abonamenty, program lojalnościowy</li>
+              <li>Policzyć biznes: marża, koszt pozyskania klienta, rentowność stanowiska</li>
+            </ul>
+          </div>
+          <div class="stages-desc" data-stage="2">
+            <h3 class="stages-desc__title">Sieć / franczyza klinik, rozpoznawalna marka</h3>
+            <p class="stages-desc__situation">Marka rozpoznawalna, kilka albo kilkanaście miejsc, kolejki klientów. Sukces przeniósł problemy wyżej: jak trzymać jakość przy dziesięciu lokalach, jak utrzymać zespół, ile kosztuje kolejne otwarcie. Konkurencja próbuje kopiować model.</p>
+            <ul class="stages-desc__goals">
+              <li>Ten sam standard wszędzie: szkolenia wewnętrzne, kontrole, anonimowy klient-tester w każdym lokalu</li>
+              <li>Stałe źródło klientów: reklama pod każde miasto, narzędzie pokazujące skąd przychodzi klient</li>
+              <li>Nowe punkty według sprawdzonego planu: każde otwarcie to powtórzenie, nie eksperyment</li>
+              <li>Decyzja o kierunku: nowe zabiegi, inne miasta, inwestor — firma za pięć lat</li>
+            </ul>
+          </div>
+        </div>
+
         <div class="stages-cards">
           <div class="stages-card stages-card--active" data-stage="0">
             <div class="stages-card__type">Etap I</div>
-            <p class="stages-card__desc">Opis wkrótce</p>
+            <p class="stages-card__desc">Lokalny salon</p>
           </div>
           <div class="stages-card" data-stage="1">
             <div class="stages-card__type">Etap II</div>
-            <p class="stages-card__desc">Opis wkrótce</p>
+            <p class="stages-card__desc">Klinika z zespołem</p>
           </div>
           <div class="stages-card" data-stage="2">
             <div class="stages-card__type">Etap III</div>
-            <p class="stages-card__desc">Opis wkrótce</p>
+            <p class="stages-card__desc">Sieć i franczyza</p>
           </div>
         </div>
       </div>
@@ -1028,6 +1121,8 @@
       var stagesCards = document.querySelectorAll('.stages-card');
       if (!stagesScroll) return;
 
+      var stagesDescs = document.querySelectorAll('.stages-desc');
+
       function setStep(step) {
         stagesBgs.forEach(function(bg, i) {
           bg.classList.toggle('is-active', i === step);
@@ -1035,6 +1130,9 @@
         });
         stagesCards.forEach(function(card, i) {
           card.classList.toggle('stages-card--active', i === step);
+        });
+        stagesDescs.forEach(function(desc, i) {
+          desc.classList.toggle('is-active', i === step);
         });
       }
 
@@ -1065,7 +1163,7 @@
   </script>
 
   <!-- Lenis CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.45/bundled/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <!-- Lenis init — owinięty try/catch, nie blokuje reszty -->
   <script>
@@ -1085,7 +1183,7 @@
           if (target) lenis.scrollTo(target, { offset: -80, duration: 1.4 });
         });
       });
-    } catch(e) {}
+    } catch(e) { console.warn('Lenis failed:', e); }
   </script>
 
 </body>
