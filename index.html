@@ -621,13 +621,34 @@
     }
 
     /* ── STAGES ── */
-    .stages-section {
-      width: 100%;
-      min-height: 100vh;
+    .stages-scroll { height: 300vh; }
+    .stages-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .stages-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.15);
+      transition: opacity 0.9s ease, transform 1.4s ease;
+    }
+    .stages-bg--1 { background-color: #0a0a18; }
+    .stages-bg--2 { background-color: #1a0800; }
+    .stages-bg--3 { background-color: #04040e; }
+    .stages-bg.is-active { opacity: 1; transform: scale(1); }
+    .stages-bg.was-active { opacity: 0; transform: scale(0.88); transition: opacity 0.6s ease, transform 1.4s ease; }
+    .stages-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
       display: flex;
       flex-direction: column;
       padding: 80px 48px 60px;
-      background: #000;
     }
     .stages-label {
       font-size: 12px;
@@ -665,7 +686,7 @@
       padding: 20px 24px;
       width: 180px;
       cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
+      transition: background 0.3s, border-color 0.3s;
     }
     .stages-card--active {
       background: #fff;
@@ -694,7 +715,7 @@
       .vs-badge { display: none; }
       .navbar__link { display: none; }
       .sec { padding: 80px 24px; }
-      .stages-section { padding: 60px 24px 40px; }
+      .stages-content { padding: 60px 24px 40px; }
       .stages-cards { align-self: stretch; }
       .stages-card { flex: 1; width: auto; }
     }
@@ -708,7 +729,8 @@
       .whatsapp-btn { display: flex; justify-content: center; width: 100%; }
       .footer { padding: 32px 20px; flex-direction: column; gap: 12px; }
       .sec { padding: 64px 20px; }
-      .stages-section { padding: 48px 20px 32px; min-height: 80vh; }
+      .stages-scroll { height: 200vh; }
+      .stages-content { padding: 48px 20px 32px; }
       .stages-cards { flex-direction: column; gap: 10px; align-self: stretch; }
       .stages-card { width: auto; }
     }
@@ -765,25 +787,32 @@
     </div>
   </section>
 
-  <!-- STAGES — 3 etapy współpracy -->
-  <section class="stages-section fi">
-    <span class="stages-label">Etapy współpracy</span>
-    <h2 class="stages-heading">Trzy kroki do <em>pełnego grafiku.</em></h2>
-    <div class="stages-cards">
-      <div class="stages-card stages-card--active">
-        <div class="stages-card__type">Etap I</div>
-        <p class="stages-card__desc">Opis wkrótce</p>
-      </div>
-      <div class="stages-card">
-        <div class="stages-card__type">Etap II</div>
-        <p class="stages-card__desc">Opis wkrótce</p>
-      </div>
-      <div class="stages-card">
-        <div class="stages-card__type">Etap III</div>
-        <p class="stages-card__desc">Opis wkrótce</p>
+  <!-- STAGES — 3 etapy współpracy (scroll-driven) -->
+  <div class="stages-scroll">
+    <div class="stages-sticky">
+      <div class="stages-bg stages-bg--1"></div>
+      <div class="stages-bg stages-bg--2"></div>
+      <div class="stages-bg stages-bg--3"></div>
+      <div class="stages-content">
+        <span class="stages-label">Etapy współpracy</span>
+        <h2 class="stages-heading">Trzy kroki do <em>pełnego grafiku.</em></h2>
+        <div class="stages-cards">
+          <div class="stages-card stages-card--active" data-stage="0">
+            <div class="stages-card__type">Etap I</div>
+            <p class="stages-card__desc">Opis wkrótce</p>
+          </div>
+          <div class="stages-card" data-stage="1">
+            <div class="stages-card__type">Etap II</div>
+            <p class="stages-card__desc">Opis wkrótce</p>
+          </div>
+          <div class="stages-card" data-stage="2">
+            <div class="stages-card__type">Etap III</div>
+            <p class="stages-card__desc">Opis wkrótce</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- STATS STRIP -->
   <div class="stats-strip fi" id="info">
@@ -993,12 +1022,38 @@
         child.style.transitionDelay = (i * 0.12) + 's';
       });
     });
-    document.querySelectorAll('.stages-card').forEach(function(card) {
-      card.addEventListener('click', function() {
-        document.querySelectorAll('.stages-card').forEach(function(c) { c.classList.remove('stages-card--active'); });
-        card.classList.add('stages-card--active');
+    (function() {
+      var stagesScroll = document.querySelector('.stages-scroll');
+      var stagesBgs = document.querySelectorAll('.stages-bg');
+      var stagesCards = document.querySelectorAll('.stages-card');
+      if (!stagesScroll) return;
+
+      function setStep(step) {
+        stagesBgs.forEach(function(bg, i) {
+          bg.classList.toggle('is-active', i === step);
+          bg.classList.toggle('was-active', i < step);
+        });
+        stagesCards.forEach(function(card, i) {
+          card.classList.toggle('stages-card--active', i === step);
+        });
+      }
+
+      function updateStages() {
+        var rect = stagesScroll.getBoundingClientRect();
+        var total = stagesScroll.offsetHeight - window.innerHeight;
+        var progress = Math.max(0, Math.min(1, -rect.top / total));
+        setStep(progress < 0.33 ? 0 : progress < 0.66 ? 1 : 2);
+      }
+
+      setStep(0);
+      window.addEventListener('scroll', updateStages, { passive: true });
+
+      stagesCards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          setStep(parseInt(card.dataset.stage));
+        });
       });
-    });
+    })();
 
     var _fi = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
