@@ -18,6 +18,7 @@
   <link rel="dns-prefetch" href="https://calendly.com">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,400&display=swap" rel="stylesheet">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -468,7 +469,7 @@
       transition: border-color 0.2s, transform 0.2s;
     }
     .service-card:hover { border-color: rgba(255,117,31,0.3); transform: translateY(-4px); }
-    .service-card__icon { font-size: 30px; margin-bottom: 18px; display: block; }
+    .service-card__icon { margin-bottom: 18px; display: block; width: 64px; height: 64px; }
     .service-card__title {
       font-size: 19px;
       font-weight: 500;
@@ -1003,32 +1004,32 @@
       <p class="sec__sub sec__sub--center fi" style="margin-bottom:0;">Sześć obszarów, które razem budują stabilny, rosnący salon.</p>
       <div class="services-grid">
         <div class="service-card fi">
-          <span class="service-card__icon">🎯</span>
+          <dotlottie-player class="service-card__icon service-lottie" src="ani-target.lottie" loop speed="0.8"></dotlottie-player>
           <h3 class="service-card__title">Pozyskiwanie klientek</h3>
           <p class="service-card__desc">Reklamy na Facebooku i Instagramie precyzyjnie kierowane do kobiet w Twojej okolicy. Płacisz za realne rezerwacje, nie za wyświetlenia.</p>
         </div>
         <div class="service-card fi">
-          <span class="service-card__icon">📱</span>
+          <dotlottie-player class="service-card__icon service-lottie" src="ani-chat.lottie" loop speed="0.8"></dotlottie-player>
           <h3 class="service-card__title">Social media</h3>
           <p class="service-card__desc">Profesjonalne posty, reelsy i stories które budują markę salonu i przyciągają nowe klientki - bez Twojego zaangażowania czasu.</p>
         </div>
         <div class="service-card fi">
-          <span class="service-card__icon">🏛️</span>
+          <dotlottie-player class="service-card__icon service-lottie" src="ani-building.lottie" loop speed="0.8"></dotlottie-player>
           <h3 class="service-card__title">Dofinansowania</h3>
           <p class="service-card__desc">Pomagamy znaleźć i aplikować o dofinansowania unijne oraz krajowe dla salonów beauty. Więcej kapitału na rozwój bez kredytu.</p>
         </div>
         <div class="service-card fi">
-          <span class="service-card__icon">⚖️</span>
+          <dotlottie-player class="service-card__icon service-lottie" src="ani-law.lottie" loop speed="0.8"></dotlottie-player>
           <h3 class="service-card__title">Ochrona prawna</h3>
           <p class="service-card__desc">Regulaminy, umowy z pracownikami, RODO, ochrona marki. Masz pewność, że prowadzisz biznes zgodnie z prawem i bez luk.</p>
         </div>
         <div class="service-card fi">
-          <span class="service-card__icon">🏢</span>
+          <dotlottie-player class="service-card__icon service-lottie" src="ani-home.lottie" loop speed="0.8"></dotlottie-player>
           <h3 class="service-card__title">Lokale dla salonów</h3>
           <p class="service-card__desc">Pomoc w znalezieniu, negocjowaniu i aranżacji lokalu pod salon lub klinikę. Wiemy czego szukać i jak wynegocjować dobre warunki najmu.</p>
         </div>
         <div class="service-card fi">
-          <span class="service-card__icon">⚡</span>
+          <dotlottie-player class="service-card__icon service-lottie" src="ani-spark.lottie" loop speed="0.8"></dotlottie-player>
           <h3 class="service-card__title">Oszczędzanie czasu</h3>
           <p class="service-card__desc">Automatyzacje, systemy rezerwacji i CRM które przejmują powtarzalne zadania. Ty zajmujesz się zabiegami - resztą zajmuje się system.</p>
         </div>
@@ -1190,6 +1191,26 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lottie sync: startujemy wszystkie animacje jednocześnie gdy są gotowe -->
+  <script type="module">
+    var players = Array.from(document.querySelectorAll('.service-lottie'));
+    if (players.length) {
+      var ready = 0;
+      players.forEach(function(p) {
+        p.addEventListener('ready', function() {
+          ready++;
+          if (ready === players.length) {
+            players.forEach(function(pl) { pl.play(); });
+          }
+        });
+      });
+      // fallback: jeśli ready nie odpali, startuj po 2s
+      setTimeout(function() {
+        players.forEach(function(pl) { try { pl.play(); } catch(e) {} });
+      }, 2000);
+    }
+  </script>
 
   <!-- Stagger + IntersectionObserver - niezależne od Lenisa -->
   <script>
