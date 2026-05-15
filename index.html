@@ -621,11 +621,9 @@
     }
 
     /* ── STAGES ── */
-    .stages-scroll { height: 300vh; }
-    .stages-sticky {
-      position: sticky;
-      top: 0;
-      height: 100vh;
+    .stages-section {
+      position: relative;
+      min-height: 100vh;
       overflow: hidden;
     }
     .stages-bg {
@@ -786,7 +784,6 @@
       .whatsapp-btn { display: flex; justify-content: center; width: 100%; }
       .footer { padding: 32px 20px; flex-direction: column; gap: 12px; }
       .sec { padding: 64px 20px; }
-      .stages-scroll { height: 200vh; }
       .stages-content { padding: 48px 20px 32px; }
       .stages-cards { flex-direction: column; gap: 10px; align-self: stretch; }
       .stages-card { width: auto; }
@@ -846,15 +843,14 @@
     </div>
   </section>
 
-  <!-- STAGES — 3 etapy współpracy (scroll-driven) -->
-  <div class="stages-scroll">
-    <div class="stages-sticky">
+  <!-- STAGES — 3 etapy salonów -->
+  <section class="stages-section">
       <div class="stages-bg stages-bg--1"></div>
       <div class="stages-bg stages-bg--2"></div>
       <div class="stages-bg stages-bg--3"></div>
       <div class="stages-content">
-        <span class="stages-label">Etapy współpracy</span>
-        <h2 class="stages-heading">Trzy kroki do <em>pełnego grafiku.</em></h2>
+        <span class="stages-label">Etapy salonów</span>
+        <h2 class="stages-heading">3 etapy salonów, <em>które skalujemy.</em></h2>
 
         <div class="stages-descs">
           <div class="stages-desc is-active" data-stage="0">
@@ -904,8 +900,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+  </section>
 
   <!-- STATS STRIP -->
   <div class="stats-strip fi" id="info">
@@ -1116,12 +1111,10 @@
       });
     });
     (function() {
-      var stagesScroll = document.querySelector('.stages-scroll');
       var stagesBgs = document.querySelectorAll('.stages-bg');
       var stagesCards = document.querySelectorAll('.stages-card');
-      if (!stagesScroll) return;
-
       var stagesDescs = document.querySelectorAll('.stages-desc');
+      if (!stagesBgs.length) return;
 
       function setStep(step) {
         stagesBgs.forEach(function(bg, i) {
@@ -1136,27 +1129,11 @@
         });
       }
 
-      function updateStages() {
-        var rect = stagesScroll.getBoundingClientRect();
-        var total = stagesScroll.offsetHeight - window.innerHeight;
-        var progress = Math.max(0, Math.min(1, -rect.top / total));
-        setStep(progress < 0.33 ? 0 : progress < 0.66 ? 1 : 2);
-      }
-
       setStep(0);
-      window._stagesUpdate = updateStages;
-      window.addEventListener('scroll', updateStages, { passive: true });
 
       stagesCards.forEach(function(card) {
         card.addEventListener('click', function() {
-          var stage = parseInt(card.dataset.stage);
-          var total = stagesScroll.offsetHeight - window.innerHeight;
-          var targetY = stagesScroll.offsetTop + total * (stage / 3) + (stage > 0 ? 2 : 0);
-          if (window._lenis) {
-            window._lenis.scrollTo(targetY, { duration: 1.0 });
-          } else {
-            window.scrollTo({ top: targetY, behavior: 'smooth' });
-          }
+          setStep(parseInt(card.dataset.stage));
         });
       });
     })();
@@ -1182,7 +1159,7 @@
         wheelMultiplier: 1.0
       });
       window._lenis = lenis;
-      function raf(time){ lenis.raf(time); if (window._stagesUpdate) window._stagesUpdate(); requestAnimationFrame(raf); }
+      function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
       requestAnimationFrame(raf);
       document.querySelectorAll('a[href^="#"]').forEach(function(a) {
         a.addEventListener('click', function(e) {
