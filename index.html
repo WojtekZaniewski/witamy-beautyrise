@@ -620,6 +620,69 @@
       flex-shrink: 0;
     }
 
+    /* ── STAGES ── */
+    .stages-section {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 80px 48px 60px;
+      background: #000;
+    }
+    .stages-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .stages-heading {
+      font-family: 'Satoshi', sans-serif;
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1.15;
+      max-width: 420px;
+    }
+    .stages-heading em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      color: #ff751f;
+    }
+    .stages-cards {
+      display: flex;
+      gap: 12px;
+      margin-top: auto;
+      align-self: flex-end;
+    }
+    .stages-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px 24px;
+      width: 180px;
+    }
+    .stages-card--active {
+      background: #fff;
+      border-color: #fff;
+    }
+    .stages-card__type {
+      font-size: 17px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .stages-card--active .stages-card__type { color: #000; }
+    .stages-card__desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+    .stages-card--active .stages-card__desc { color: rgba(0,0,0,0.55); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .problem-grid, .feature-inner, .feature-inner--rev,
@@ -629,6 +692,9 @@
       .vs-badge { display: none; }
       .navbar__link { display: none; }
       .sec { padding: 80px 24px; }
+      .stages-section { padding: 60px 24px 40px; }
+      .stages-cards { align-self: stretch; }
+      .stages-card { flex: 1; width: auto; }
     }
 
     @media (max-width: 600px) {
@@ -640,6 +706,9 @@
       .whatsapp-btn { display: flex; justify-content: center; width: 100%; }
       .footer { padding: 32px 20px; flex-direction: column; gap: 12px; }
       .sec { padding: 64px 20px; }
+      .stages-section { padding: 48px 20px 32px; min-height: 80vh; }
+      .stages-cards { flex-direction: column; gap: 10px; align-self: stretch; }
+      .stages-card { width: auto; }
     }
   </style>
 </head>
@@ -691,6 +760,26 @@
         Wolisz pisać? Napisz na WhatsAppie
       </a>
     </div>
+    </div>
+  </section>
+
+  <!-- STAGES — 3 etapy współpracy -->
+  <section class="stages-section fi">
+    <span class="stages-label">Etapy współpracy</span>
+    <h2 class="stages-heading">Trzy kroki do <em>pełnego grafiku.</em></h2>
+    <div class="stages-cards">
+      <div class="stages-card stages-card--active">
+        <div class="stages-card__type">Etap I</div>
+        <p class="stages-card__desc">Opis wkrótce</p>
+      </div>
+      <div class="stages-card">
+        <div class="stages-card__type">Etap II</div>
+        <p class="stages-card__desc">Opis wkrótce</p>
+      </div>
+      <div class="stages-card">
+        <div class="stages-card__type">Etap III</div>
+        <p class="stages-card__desc">Opis wkrótce</p>
+      </div>
     </div>
   </section>
 
