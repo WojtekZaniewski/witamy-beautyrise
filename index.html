@@ -242,16 +242,6 @@
       text-align: center;
     }
 
-    .values-section__label {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #ff751f;
-      display: block;
-      margin-bottom: 16px;
-    }
-
     .values-section__title {
       font-family: 'Satoshi', sans-serif;
       font-size: clamp(32px, 4vw, 52px);
@@ -265,50 +255,6 @@
       font-family: 'Instrument Serif', serif;
       font-style: italic;
       color: #ff751f;
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      width: 100%;
-      max-width: 1000px;
-    }
-
-    .value-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 20px;
-      padding: 36px 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      text-align: center;
-    }
-
-    .value-card dotlottie-player {
-      width: 120px;
-      height: 120px;
-    }
-
-    .value-card__title {
-      font-family: 'Satoshi', sans-serif;
-      font-size: 20px;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      color: #fff;
-    }
-
-    .value-card__desc {
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.5);
-    }
-
-    @media (max-width: 768px) {
-      .values-grid { grid-template-columns: 1fr; max-width: 400px; }
     }
 
     /* ── SHARED ── */
@@ -356,6 +302,7 @@
     .fi {
       opacity: 0;
       transform: translateY(64px);
+      will-change: opacity, transform;
       transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
                   transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -894,42 +841,45 @@
     <span class="footer__copy">© 2025 BeautyRise. Wszelkie prawa zastrzeżone.</span>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.45/bundled/lenis.min.js"></script>
+  <!-- Stagger + IntersectionObserver — niezależne od Lenisa -->
   <script>
-    /* ── Lenis smooth scroll ── */
-    var lenis = new Lenis({
-      duration: 1.4,
-      easing: function(t){ return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); },
-      smoothWheel: true,
-      wheelMultiplier: 1.1
-    });
-    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-
-    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-      a.addEventListener('click', function(e) {
-        e.preventDefault();
-        var target = document.querySelector(a.getAttribute('href'));
-        if (target) lenis.scrollTo(target, { offset: -80, duration: 1.4 });
-      });
-    });
-
-    /* ── Stagger delays for grid children ── */
-    ['.services-grid', '.testimonials-grid', '.stats-strip__grid'].forEach(function(sel) {
+    ['.services-grid', '.testimonials-grid'].forEach(function(sel) {
       var grid = document.querySelector(sel);
       if (!grid) return;
       Array.from(grid.children).forEach(function(child, i) {
         child.style.transitionDelay = (i * 0.12) + 's';
       });
     });
-
-    /* ── IntersectionObserver (Apple-style: trigger early) ── */
     var _fi = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
         if (e.isIntersecting) { e.target.classList.add('on'); _fi.unobserve(e.target); }
       });
-    }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.06 });
     document.querySelectorAll('.fi').forEach(function(el) { _fi.observe(el); });
+  </script>
+
+  <!-- Lenis CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.45/bundled/lenis.min.js"></script>
+
+  <!-- Lenis init — owinięty try/catch, nie blokuje reszty -->
+  <script>
+    try {
+      var lenis = new Lenis({
+        duration: 1.6,
+        easing: function(t){ return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); },
+        smoothWheel: true,
+        wheelMultiplier: 1.0
+      });
+      function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = document.querySelector(a.getAttribute('href'));
+          if (target) lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+        });
+      });
+    } catch(e) {}
   </script>
 
 </body>
