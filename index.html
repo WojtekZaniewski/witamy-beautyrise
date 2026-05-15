@@ -401,6 +401,10 @@
       gap: 72px;
       align-items: center;
     }
+    .phone-mock-wrap {
+      position: relative;
+      height: 480px;
+    }
     .problem-list {
       list-style: none;
       display: flex;
@@ -423,9 +427,11 @@
       flex-shrink: 0;
     }
     .phone-mock {
-      max-width: 720px;
-      margin: 0 auto;
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 720px;
       background: transparent;
     }
     .phone-mock img {
@@ -977,7 +983,7 @@
             <li>Klientki przychodzą nieregularnie - brakuje systemu przypominającego i powracającego.</li>
           </ul>
         </div>
-        <div class="fi">
+        <div class="fi phone-mock-wrap">
           <div class="phone-mock">
             <img src="iphone-instagram.webp" alt="iPhone z Instagramem salonu" loading="lazy">
           </div>
