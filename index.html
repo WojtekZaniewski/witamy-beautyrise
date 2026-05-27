@@ -582,49 +582,125 @@
     .comparison-cta:hover { background: #ff8c3a; }
 
     /* ── TESTIMONIALS ── */
-    .testimonials-section { text-align: center; }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    .testimonials-section { text-align: center; padding: 100px 0 120px; overflow: hidden; }
+    .br-test-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 20px;
-      margin-top: 52px;
-      text-align: left;
+      text-align: center;
+      padding: 0 32px;
+      margin-bottom: 64px;
     }
-    .testimonial-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 20px;
-      padding: 28px;
-      transition: border-color 0.2s;
-    }
-    .testimonial-card:hover { border-color: rgba(255,117,31,0.3); }
-    .testimonial-result {
-      display: inline-block;
-      background: rgba(255,117,31,0.1);
-      color: #ff751f;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      padding: 4px 10px;
-      border-radius: 8px;
-      margin-bottom: 16px;
-    }
-    .testimonial-quote {
-      font-size: 15px;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.65;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-    .testimonial-author {
-      font-size: 14px;
-      font-weight: 500;
-      color: #fff;
-    }
-    .testimonial-salon {
+    .br-test-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
       font-size: 13px;
-      color: rgba(255,255,255,0.3);
-      margin-top: 2px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.02em;
+    }
+    .br-test-h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: #fff;
+      margin: 0;
+    }
+    .br-test-h2 em { font-style: italic; color: #ff751f; font-family: "Instrument Serif", serif; font-weight: 400; }
+
+    /* ── MARQUEE WALL ── */
+    .br-marquee-section {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin-top: 16px;
+    }
+    .br-marquee-section::before,
+    .br-marquee-section::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 180px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .br-marquee-section::before {
+      left: 0;
+      background: linear-gradient(to right, #000 0%, transparent 100%);
+    }
+    .br-marquee-section::after {
+      right: 0;
+      background: linear-gradient(to left, #000 0%, transparent 100%);
+    }
+    .br-marquee-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      width: max-content;
+    }
+    .br-marquee-row.row-forward { animation: marquee-fwd 55s linear infinite; }
+    .br-marquee-row.row-reverse { animation: marquee-rev 65s linear infinite; }
+    .br-marquee-row:hover { animation-play-state: paused; }
+    @keyframes marquee-fwd {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marquee-rev {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .br-mq-card {
+      flex-shrink: 0;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .br-mq-card:hover {
+      border-color: rgba(255,117,31,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .br-mq-card.type-text { width: 320px; padding: 26px; display: flex; flex-direction: column; gap: 18px; }
+    .br-mq-card.type-text-wide { width: 380px; padding: 26px; display: flex; flex-direction: column; gap: 18px; }
+    .br-mq-stars { display: flex; gap: 3px; }
+    .br-mq-stars svg { width: 13px; height: 13px; fill: rgb(255,117,31); }
+    .br-mq-quote {
+      font-size: 15px; font-weight: 400; line-height: 1.65;
+      color: rgba(255,255,255,0.78); margin: 0; flex: 1; letter-spacing: -0.01em;
+    }
+    .br-mq-author {
+      display: flex; align-items: center; gap: 12px;
+      padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.07); margin-top: auto;
+    }
+    .br-mq-name { font-size: 14px; font-weight: 600; color: #fff; letter-spacing: -0.02em; line-height: 1.3; }
+    .br-mq-role { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.38); letter-spacing: -0.01em; margin-top: 2px; }
+    .br-mq-card.type-video { width: 200px; aspect-ratio: 9 / 16; padding: 0; cursor: pointer; }
+    .br-mq-card.type-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .br-mq-card.type-photo { width: 240px; padding: 0; aspect-ratio: 3/4; background: #0a0a0a; }
+    .br-mq-card.type-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .br-mq-photo-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      padding: 20px 18px 18px;
+    }
+    .br-mq-photo-overlay .br-mq-name { font-size: 14px; }
+    .br-mq-photo-overlay .br-mq-role { font-size: 11px; }
+    @media (max-width: 768px) {
+      .br-marquee-section::before,
+      .br-marquee-section::after { width: 80px; }
+      .br-mq-card.type-text { width: 280px; }
+      .br-mq-card.type-text-wide { width: 300px; }
+      .br-mq-card.type-video { width: 160px; }
+      .br-mq-card.type-photo { width: 180px; }
     }
 
     /* ── WHATSAPP BUTTON ── */
@@ -1121,37 +1197,288 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="sec testimonials-section">
-    <div class="sec__inner">
-      <span class="sec__label fi">Wyniki klientów</span>
-      <h2 class="sec__title fi">Co mówią właścicielki <em>salonów</em></h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card fi">
-          <div class="testimonial-result">+127% rezerwacji</div>
-          <p class="testimonial-quote">"Przed BeautyRise robiłam posty sama i płaciłam za reklamy bez żadnego skutku. Teraz grafik mam pełny na 3 tygodnie do przodu - i nie robię nic marketingowo."</p>
-          <div class="testimonial-author">Anna K.</div>
-          <div class="testimonial-salon">Salon kosmetyczny, Warszawa</div>
-        </div>
-        <div class="testimonial-card fi">
-          <div class="testimonial-result">+89 nowych klientek / mies.</div>
-          <p class="testimonial-quote">"Szczerze - byłam sceptyczna. Ale po pierwszym miesiącu liczby mówiły same za siebie. Reklamy rzeczywiście przynoszą klientki"</p>
-          <div class="testimonial-author">Marta W.</div>
-          <div class="testimonial-salon">Studio urody, Kraków</div>
-        </div>
-        <div class="testimonial-card fi">
-          <div class="testimonial-result">4.9★ na Google (z 3.8★)</div>
-          <p class="testimonial-quote">"Automatyzacja z opiniami Google to był game changer. W 3 miesiące przeszłam z 3.8 do 4.9 gwiazdki i teraz klientki same mnie znajdują w mapach."</p>
-          <div class="testimonial-author">Karolina S.</div>
-          <div class="testimonial-salon">Klinika estetyczna, Poznań</div>
-        </div>
-        <div class="testimonial-card fi">
-          <div class="testimonial-result">ROI 4.1x w 60 dni</div>
-          <p class="testimonial-quote">"Zainwestowałam w BeautyRise i w ciągu 2 miesięcy zarobiłam 4x więcej niż zapłaciłam za współpracę. Żałuję że nie zaczęłam wcześniej."</p>
-          <div class="testimonial-author">Joanna P.</div>
-          <div class="testimonial-salon">Salon paznokci, Wrocław</div>
-        </div>
-      </div>
+  <section class="testimonials-section">
+
+    <div class="br-test-header">
+      <span class="br-test-badge">Opinie</span>
+      <h2 class="br-test-h2">Inwestycja w spokój zawsze się <em>opłaca</em></h2>
     </div>
+
+    <div class="br-marquee-section">
+
+      <!-- ROW 1 (scrolls left) -->
+      <div class="br-marquee-row row-forward">
+
+        <div class="br-mq-card type-text-wide">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Beauty Rise naprawdę odciążyło mnie z problemów, które borykały mnie od kilku miesięcy czasu. Komunikacja przebiegała w bardzo ludzki i ciepły sposób, bez żadnego skomplikowanego języka jak w innych agencjach"</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Aleksandra W.</div>
+              <div class="br-mq-role">medycyna estetyczna · Kraków</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="br-mq-card type-video">
+          <video src="opinia-klientki-beauty-rise.mp4" controls playsinline preload="metadata"></video>
+        </div>
+
+        <div class="br-mq-card type-text-wide">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Niespodziewałam się tak dobrych rezultatów z kampanii na facebooku oraz z umiejętności sprzedażowych zespołu. Jestem bardzo zadowolona, serdecznie polecam."</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Joanna K.</div>
+              <div class="br-mq-role">studio urody · Wrocław</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="br-mq-card type-photo">
+          <img src="opinia-klientki-o-beauty-rise.webp" alt="Klientka BeautyRise">
+          <div class="br-mq-photo-overlay">
+            <div class="br-mq-name">Klientka BeautyRise</div>
+            <div class="br-mq-role">salon kosmetyczny · Warszawa</div>
+          </div>
+        </div>
+
+        <div class="br-mq-card type-text">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Przed BeautyRise robiłam posty sama i płaciłam za reklamy bez żadnego skutku. Teraz grafik mam pełny na 3 tygodnie do przodu."</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Anna K.</div>
+              <div class="br-mq-role">salon kosmetyczny · Warszawa</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- duplicate for seamless loop -->
+        <div class="br-mq-card type-text-wide">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Beauty Rise naprawdę odciążyło mnie z problemów, które borykały mnie od kilku miesięcy czasu. Komunikacja przebiegała w bardzo ludzki i ciepły sposób, bez żadnego skomplikowanego języka jak w innych agencjach"</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Aleksandra W.</div>
+              <div class="br-mq-role">medycyna estetyczna · Kraków</div>
+            </div>
+          </div>
+        </div>
+        <div class="br-mq-card type-video">
+          <video src="opinia-klientki-beauty-rise.mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="br-mq-card type-text-wide">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Niespodziewałam się tak dobrych rezultatów z kampanii na facebooku oraz z umiejętności sprzedażowych zespołu. Jestem bardzo zadowolona, serdecznie polecam."</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Joanna K.</div>
+              <div class="br-mq-role">studio urody · Wrocław</div>
+            </div>
+          </div>
+        </div>
+        <div class="br-mq-card type-photo">
+          <img src="opinia-klientki-o-beauty-rise.webp" alt="Klientka BeautyRise">
+          <div class="br-mq-photo-overlay">
+            <div class="br-mq-name">Klientka BeautyRise</div>
+            <div class="br-mq-role">salon kosmetyczny · Warszawa</div>
+          </div>
+        </div>
+        <div class="br-mq-card type-text">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Przed BeautyRise robiłam posty sama i płaciłam za reklamy bez żadnego skutku. Teraz grafik mam pełny na 3 tygodnie do przodu."</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Anna K.</div>
+              <div class="br-mq-role">salon kosmetyczny · Warszawa</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ROW 2 (scrolls right) -->
+      <div class="br-marquee-row row-reverse">
+
+        <div class="br-mq-card type-text-wide">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Szczerze - byłam sceptyczna. Ale po pierwszym miesiącu liczby mówiły same za siebie. Reklamy rzeczywiście przynoszą klientki."</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Marta W.</div>
+              <div class="br-mq-role">studio urody · Kraków</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="br-mq-card type-video">
+          <video src="opinia-klientki-agencja-beauty-rise.mp4" controls playsinline preload="metadata"></video>
+        </div>
+
+        <div class="br-mq-card type-text-wide">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Zainwestowałam w BeautyRise i w ciągu 2 miesięcy zarobiłam 4x więcej niż zapłaciłam za współpracę. Żałuję że nie zaczęłam wcześniej."</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Joanna P.</div>
+              <div class="br-mq-role">salon paznokci · Wrocław</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="br-mq-card type-photo">
+          <img src="opinia-klientki-o-agencji-beauty-rise.webp" alt="Klientka BeautyRise">
+          <div class="br-mq-photo-overlay">
+            <div class="br-mq-name">Klientka BeautyRise</div>
+            <div class="br-mq-role">salon premium · Gdańsk</div>
+          </div>
+        </div>
+
+        <div class="br-mq-card type-text">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Automatyzacja z opiniami Google to był game changer. W 3 miesiące przeszłam z 3.8 do 4.9 gwiazdki i teraz klientki same mnie znajdują w mapach."</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Karolina S.</div>
+              <div class="br-mq-role">klinika estetyczna · Poznań</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- duplicate for seamless loop -->
+        <div class="br-mq-card type-text-wide">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Szczerze - byłam sceptyczna. Ale po pierwszym miesiącu liczby mówiły same za siebie. Reklamy rzeczywiście przynoszą klientki."</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Marta W.</div>
+              <div class="br-mq-role">studio urody · Kraków</div>
+            </div>
+          </div>
+        </div>
+        <div class="br-mq-card type-video">
+          <video src="opinia-klientki-agencja-beauty-rise.mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="br-mq-card type-text-wide">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Zainwestowałam w BeautyRise i w ciągu 2 miesięcy zarobiłam 4x więcej niż zapłaciłam za współpracę. Żałuję że nie zaczęłam wcześniej."</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Joanna P.</div>
+              <div class="br-mq-role">salon paznokci · Wrocław</div>
+            </div>
+          </div>
+        </div>
+        <div class="br-mq-card type-photo">
+          <img src="opinia-klientki-o-agencji-beauty-rise.webp" alt="Klientka BeautyRise">
+          <div class="br-mq-photo-overlay">
+            <div class="br-mq-name">Klientka BeautyRise</div>
+            <div class="br-mq-role">salon premium · Gdańsk</div>
+          </div>
+        </div>
+        <div class="br-mq-card type-text">
+          <div class="br-mq-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          </div>
+          <p class="br-mq-quote">"Automatyzacja z opiniami Google to był game changer. W 3 miesiące przeszłam z 3.8 do 4.9 gwiazdki i teraz klientki same mnie znajdują w mapach."</p>
+          <div class="br-mq-author">
+            <div>
+              <div class="br-mq-name">Karolina S.</div>
+              <div class="br-mq-role">klinika estetyczna · Poznań</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script>
+      (function() {
+        var section = document.querySelector('.br-marquee-section');
+        if (!section) return;
+        var videos = section.querySelectorAll('video');
+        videos.forEach(function(video) {
+          var row = video.closest('.br-marquee-row');
+          if (!row) return;
+          video.addEventListener('play', function() { row.style.animationPlayState = 'paused'; });
+          video.addEventListener('pause', function() { row.style.animationPlayState = 'running'; });
+          video.addEventListener('ended', function() { row.style.animationPlayState = 'running'; });
+        });
+      })();
+    </script>
+
   </section>
 
   <!-- FOOTER -->
