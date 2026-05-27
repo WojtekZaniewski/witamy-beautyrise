@@ -498,13 +498,36 @@
       color: rgba(255,255,255,0.55);
       line-height: 1.55;
     }
-    .check-list li::before { content: "✓"; color: #ff751f; font-weight: 700; flex-shrink: 0; }
+    .check-list li::before { content: "→"; color: #ff751f; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
     .feature-mock {
       border-radius: 20px;
       aspect-ratio: 4/3;
       position: relative;
       overflow: hidden;
       background: #0a0a0a;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .feature-mock::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 34px;
+      background: rgba(18, 18, 18, 0.92);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .feature-mock::after {
+      content: '';
+      position: absolute;
+      top: 12px; left: 14px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 95, 87, 0.75);
+      box-shadow: 16px 0 0 rgba(255, 189, 46, 0.75), 32px 0 0 rgba(40, 201, 64, 0.75);
+      z-index: 2;
+      pointer-events: none;
     }
     .feature-mock img {
       width: 100%;
@@ -959,7 +982,7 @@
           <p class="service-card__desc">Reklamy na Facebooku i Instagramie precyzyjnie kierowane do kobiet w Twojej okolicy. Płacisz za realne rezerwacje, nie za wyświetlenia.</p>
         </div>
         <div class="service-card fi">
-          <dotlottie-player class="service-card__icon service-lottie" src="ani-chat.lottie" loop speed="0.8"></dotlottie-player>
+          <dotlottie-player class="service-card__icon service-lottie" src="Social Bubble.lottie" loop speed="0.8"></dotlottie-player>
           <h3 class="service-card__title">Social media</h3>
           <p class="service-card__desc">Profesjonalne posty, reelsy i stories które budują markę salonu i przyciągają nowe klientki - bez Twojego zaangażowania czasu.</p>
         </div>
@@ -992,7 +1015,7 @@
     <div class="sec__inner">
       <div class="feature-inner">
         <div class="feature-text fi">
-          <span class="sec__label">Meta Ads</span>
+          <span class="sec__label">01 — Meta Ads</span>
           <h2 class="sec__title">Reklamy które przynoszą rezerwacje, <em>nie tylko lajki</em></h2>
           <ul class="check-list">
             <li>Targetowanie kobiet w promieniu 10 km od Twojego salonu - zero zmarnowanego budżetu.</li>
@@ -1011,7 +1034,7 @@
     <div class="sec__inner">
       <div class="feature-inner feature-inner--rev">
         <div class="feature-text fi">
-          <span class="sec__label">Content Marketing</span>
+          <span class="sec__label">02 — Content Marketing</span>
           <h2 class="sec__title">Profesjonalne treści <em>bez angażowania Twojego czasu</em></h2>
           <ul class="check-list">
             <li>Miesięczny kalendarz treści - scenariusze, grafiki i teksty gotowe do publikacji.</li>
@@ -1030,7 +1053,7 @@
     <div class="sec__inner">
       <div class="feature-inner">
         <div class="feature-text fi">
-          <span class="sec__label">Automatyzacja</span>
+          <span class="sec__label">03 — Automatyzacja</span>
           <h2 class="sec__title">System który przypomina klientkom <em>o powrocie</em></h2>
           <ul class="check-list">
             <li>Automatyczne SMS i e-mail z przypomnieniem o wizycie - zero nieobecności.</li>
