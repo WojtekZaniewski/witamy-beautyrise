@@ -537,6 +537,38 @@
       border-radius: 20px;
     }
 
+    /* ── FEATURE SECTION LAYOUTS ── */
+    /* Section 1: 50/50, mock leans back with 3D tilt */
+    .feature-section--ads .feature-mock {
+      transform: perspective(1400px) rotateY(-5deg);
+    }
+    /* Section 2: asymmetric 35/65 — mock dominant, opposite tilt */
+    .feature-section--content .feature-inner {
+      grid-template-columns: 2fr 3fr;
+    }
+    .feature-section--content .feature-mock {
+      transform: perspective(1400px) rotateY(5deg);
+    }
+    /* Section 3: stacked — text centered above, wide mock below */
+    .feature-section--auto .feature-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+    .feature-section--auto .feature-text {
+      max-width: 640px;
+      text-align: center;
+    }
+    .feature-section--auto .check-list {
+      text-align: left;
+    }
+    .feature-section--auto .feature-mock {
+      width: 100%;
+      max-width: 880px;
+      aspect-ratio: 16/9;
+    }
+
     /* ── COMPARISON ── */
     .comparison-section { text-align: center; }
     .comparison-grid {
@@ -1011,7 +1043,7 @@
   </section>
 
   <!-- FEATURE 1 -->
-  <section class="sec">
+  <section class="sec feature-section--ads">
     <div class="sec__inner">
       <div class="feature-inner">
         <div class="feature-text fi">
@@ -1030,7 +1062,7 @@
   </section>
 
   <!-- FEATURE 2 -->
-  <section class="sec sec--dark">
+  <section class="sec sec--dark feature-section--content">
     <div class="sec__inner">
       <div class="feature-inner feature-inner--rev">
         <div class="feature-text fi">
@@ -1049,7 +1081,7 @@
   </section>
 
   <!-- FEATURE 3 -->
-  <section class="sec">
+  <section class="sec feature-section--auto">
     <div class="sec__inner">
       <div class="feature-inner">
         <div class="feature-text fi">
