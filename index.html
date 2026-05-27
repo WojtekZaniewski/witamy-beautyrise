@@ -581,128 +581,6 @@
     }
     .comparison-cta:hover { background: #ff8c3a; }
 
-    /* ── TESTIMONIALS ── */
-    .testimonials-section { text-align: center; padding: 100px 0 120px; overflow: hidden; }
-    .br-test-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      text-align: center;
-      padding: 0 32px;
-      margin-bottom: 64px;
-    }
-    .br-test-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.02em;
-    }
-    .br-test-h2 {
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 500;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      color: #fff;
-      margin: 0;
-    }
-    .br-test-h2 em { font-style: italic; color: #ff751f; font-family: "Instrument Serif", serif; font-weight: 400; }
-
-    /* ── MARQUEE WALL ── */
-    .br-marquee-section {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      margin-top: 16px;
-    }
-    .br-marquee-section::before,
-    .br-marquee-section::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 180px;
-      z-index: 10;
-      pointer-events: none;
-    }
-    .br-marquee-section::before {
-      left: 0;
-      background: linear-gradient(to right, #000 0%, transparent 100%);
-    }
-    .br-marquee-section::after {
-      right: 0;
-      background: linear-gradient(to left, #000 0%, transparent 100%);
-    }
-    .br-marquee-row {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 16px;
-      width: max-content;
-    }
-    .br-marquee-row.row-forward { animation: marquee-fwd 55s linear infinite; }
-    .br-marquee-row.row-reverse { animation: marquee-rev 65s linear infinite; }
-    .br-marquee-row:hover { animation-play-state: paused; }
-    @keyframes marquee-fwd {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    @keyframes marquee-rev {
-      0%   { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
-    }
-    .br-mq-card {
-      flex-shrink: 0;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      overflow: hidden;
-      position: relative;
-      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .br-mq-card:hover {
-      border-color: rgba(255,117,31,0.35);
-      transform: translateY(-3px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
-    }
-    .br-mq-card.type-text { width: 320px; padding: 26px; display: flex; flex-direction: column; gap: 18px; }
-    .br-mq-card.type-text-wide { width: 380px; padding: 26px; display: flex; flex-direction: column; gap: 18px; }
-    .br-mq-stars { display: flex; gap: 3px; }
-    .br-mq-stars svg { width: 13px; height: 13px; fill: rgb(255,117,31); }
-    .br-mq-quote {
-      font-size: 15px; font-weight: 400; line-height: 1.65;
-      color: rgba(255,255,255,0.78); margin: 0; flex: 1; letter-spacing: -0.01em;
-    }
-    .br-mq-author {
-      display: flex; align-items: center; gap: 12px;
-      padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.07); margin-top: auto;
-    }
-    .br-mq-name { font-size: 14px; font-weight: 600; color: #fff; letter-spacing: -0.02em; line-height: 1.3; }
-    .br-mq-role { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.38); letter-spacing: -0.01em; margin-top: 2px; }
-    .br-mq-card.type-video { width: 200px; aspect-ratio: 9 / 16; padding: 0; cursor: pointer; }
-    .br-mq-card.type-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .br-mq-card.type-photo { width: 240px; padding: 0; aspect-ratio: 3/4; background: #0a0a0a; }
-    .br-mq-card.type-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .br-mq-photo-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.75));
-      padding: 20px 18px 18px;
-    }
-    .br-mq-photo-overlay .br-mq-name { font-size: 14px; }
-    .br-mq-photo-overlay .br-mq-role { font-size: 11px; }
-    @media (max-width: 768px) {
-      .br-marquee-section::before,
-      .br-marquee-section::after { width: 80px; }
-      .br-mq-card.type-text { width: 280px; }
-      .br-mq-card.type-text-wide { width: 300px; }
-      .br-mq-card.type-video { width: 160px; }
-      .br-mq-card.type-photo { width: 180px; }
-    }
-
     /* ── WHATSAPP BUTTON ── */
     .whatsapp-btn {
       display: inline-flex;
@@ -1197,287 +1075,582 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials-section">
+  <section class="testimonials-section" id="testimonials">
+          <style>
+            /* ── TESTIMONIALS SECTION — INFINITE MARQUEE WALL ── */
+            #testimonials {
+              padding: 100px 0 120px;
+              overflow: hidden;
+            }
 
-    <div class="br-test-header">
-      <span class="br-test-badge">Opinie</span>
-      <h2 class="br-test-h2">Inwestycja w spokój zawsze się <em>opłaca</em></h2>
-    </div>
+            /* Header */
+            #testimonials .br-test-header {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 20px;
+              text-align: center;
+              padding: 0 32px;
+              margin-bottom: 64px;
+            }
+            #testimonials .br-test-badge {
+              display: inline-flex;
+              align-items: center;
+              padding: 6px 16px;
+              border-radius: 999px;
+              border: 1px solid rgba(255,255,255,0.12);
+              background: rgba(17,17,17,0.8);
+              backdrop-filter: blur(6px);
+              font-family: "Satoshi","Satoshi Placeholder",sans-serif;
+              font-size: 13px;
+              font-weight: 500;
+              letter-spacing: -0.02em;
+              color: rgba(255,255,255,0.7);
+            }
+            #testimonials .br-test-h2 {
+              font-family: "Satoshi","Satoshi Placeholder",sans-serif;
+              font-size: clamp(36px,5vw,60px);
+              font-weight: 500;
+              letter-spacing: -0.04em;
+              line-height: 1.08;
+              color: #fff;
+              margin: 0;
+            }
+            #testimonials .br-test-h2 em {
+              font-family: "Instrument Serif","Instrument Serif Placeholder",serif;
+              font-style: italic;
+              font-weight: 400;
+              letter-spacing: 0;
+              color: rgb(255,117,31);
+            }
+          </style>
 
-    <div class="br-marquee-section">
-
-      <!-- ROW 1 (scrolls left) -->
-      <div class="br-marquee-row row-forward">
-
-        <div class="br-mq-card type-text-wide">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+          <!-- Header -->
+          <div class="br-test-header">
+            <span class="br-test-badge">Opinie</span>
+            <h2 class="br-test-h2">Inwestycja w spokój zawsze się <em>opłaca</em></h2>
           </div>
-          <p class="br-mq-quote">"Beauty Rise naprawdę odciążyło mnie z problemów, które borykały mnie od kilku miesięcy czasu. Komunikacja przebiegała w bardzo ludzki i ciepły sposób, bez żadnego skomplikowanego języka jak w innych agencjach"</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Aleksandra W.</div>
-              <div class="br-mq-role">medycyna estetyczna · Kraków</div>
+
+          <!-- ── MARQUEE WALL ── -->
+          <style>
+            /* ── MARQUEE WALL STYLES ── */
+            .br-marquee-section {
+              width: 100%;
+              overflow: hidden;
+              position: relative;
+              margin-top: 16px;
+            }
+
+            /* edge fades */
+            .br-marquee-section::before,
+            .br-marquee-section::after {
+              content: '';
+              position: absolute;
+              top: 0; bottom: 0;
+              width: 180px;
+              z-index: 10;
+              pointer-events: none;
+            }
+            .br-marquee-section::before {
+              left: 0;
+              background: linear-gradient(to right, #000 0%, transparent 100%);
+            }
+            .br-marquee-section::after {
+              right: 0;
+              background: linear-gradient(to left, #000 0%, transparent 100%);
+            }
+
+            .br-marquee-row {
+              display: flex;
+              gap: 16px;
+              margin-bottom: 16px;
+              width: max-content;
+            }
+            .br-marquee-row.row-forward {
+              animation: marquee-fwd 55s linear infinite;
+            }
+            .br-marquee-row.row-reverse {
+              animation: marquee-rev 65s linear infinite;
+            }
+            .br-marquee-row:hover {
+              animation-play-state: paused;
+            }
+
+            @keyframes marquee-fwd {
+              0%   { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            @keyframes marquee-rev {
+              0%   { transform: translateX(-50%); }
+              100% { transform: translateX(0); }
+            }
+
+            /* ── BASE CARD ── */
+            .br-mq-card {
+              flex-shrink: 0;
+              border-radius: 20px;
+              background: rgba(255,255,255,0.04);
+              border: 1px solid rgba(255,255,255,0.09);
+              overflow: hidden;
+              position: relative;
+              transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .br-mq-card:hover {
+              border-color: rgba(255,117,31,0.35);
+              transform: translateY(-3px);
+              box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+            }
+
+            /* ── TEXT CARD ── */
+            .br-mq-card.type-text {
+              width: 320px;
+              padding: 26px;
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+            }
+            .br-mq-card.type-text-wide {
+              width: 380px;
+              padding: 26px;
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+            }
+
+            .br-mq-stars {
+              display: flex;
+              gap: 3px;
+            }
+            .br-mq-stars svg {
+              width: 13px; height: 13px;
+              fill: rgb(255,117,31);
+            }
+
+            .br-mq-quote {
+              font-family: "Satoshi","Satoshi Placeholder",sans-serif;
+              font-size: 15px;
+              font-weight: 400;
+              line-height: 1.65;
+              color: rgba(255,255,255,0.78);
+              margin: 0;
+              flex: 1;
+              letter-spacing: -0.01em;
+            }
+
+            .br-mq-author {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding-top: 18px;
+              border-top: 1px solid rgba(255,255,255,0.07);
+              margin-top: auto;
+            }
+            .br-mq-avatar {
+              display: none;
+            }
+            .br-mq-name {
+              font-family: "Satoshi","Satoshi Placeholder",sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              color: #fff;
+              letter-spacing: -0.02em;
+              line-height: 1.3;
+            }
+            .br-mq-role {
+              font-family: "Satoshi","Satoshi Placeholder",sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              color: rgba(255,255,255,0.38);
+              letter-spacing: -0.01em;
+              margin-top: 2px;
+            }
+            .br-mq-verified {
+              display: inline-flex;
+              align-items: center;
+              gap: 4px;
+              margin-left: auto;
+              padding: 3px 9px;
+              border-radius: 999px;
+              border: 1px solid rgba(255,255,255,0.08);
+              background: rgba(255,255,255,0.03);
+              font-family: "Satoshi","Satoshi Placeholder",sans-serif;
+              font-size: 10px;
+              font-weight: 500;
+              color: rgba(255,255,255,0.3);
+              white-space: nowrap;
+              flex-shrink: 0;
+            }
+            .br-mq-verified svg { width: 10px; height: 10px; }
+
+            /* ── VIDEO CARD ── */
+            .br-mq-card.type-video {
+              width: 200px;
+              aspect-ratio: 9 / 16;
+              padding: 0;
+              cursor: pointer;
+            }
+            .br-mq-card.type-video video {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              display: block;
+            }
+
+            /* ── PHOTO CARD (stat/highlight) ── */
+            .br-mq-card.type-photo {
+              width: 240px;
+              padding: 0;
+              aspect-ratio: 3/4;
+              background: #0a0a0a;
+            }
+            .br-mq-card.type-photo .br-mq-photo-placeholder {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+              background:
+                radial-gradient(ellipse 80% 60% at 50% 20%, rgba(255,117,31,0.07) 0%, transparent 65%);
+            }
+            .br-mq-card.type-photo .br-mq-photo-placeholder svg {
+              width: 32px; height: 32px;
+              opacity: 0.2;
+            }
+            .br-mq-card.type-photo .br-mq-photo-placeholder span {
+              font-family: "Satoshi","Satoshi Placeholder",sans-serif;
+              font-size: 11px;
+              color: rgba(255,255,255,0.22);
+              letter-spacing: 0.04em;
+              text-transform: uppercase;
+            }
+            .br-mq-card.type-photo img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              display: block;
+            }
+            .br-mq-photo-overlay {
+              position: absolute;
+              bottom: 0; left: 0; right: 0;
+              background: linear-gradient(transparent, rgba(0,0,0,0.75));
+              padding: 20px 18px 18px;
+            }
+            .br-mq-photo-overlay .br-mq-name {
+              font-size: 14px;
+            }
+            .br-mq-photo-overlay .br-mq-role {
+              font-size: 11px;
+            }
+
+            /* ── STAT CARD ── */
+            .br-mq-card.type-stat {
+              width: 200px;
+              padding: 28px 24px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+              background: #000;
+              border-color: rgba(255,255,255,0.1);
+              text-align: center;
+            }
+            .br-mq-stat-number {
+              font-family: "Instrument Serif","Instrument Serif Placeholder",serif;
+              font-size: 52px;
+              font-style: italic;
+              font-weight: 400;
+              color: rgb(255,117,31);
+              line-height: 1;
+              letter-spacing: -0.02em;
+            }
+            .br-mq-stat-label {
+              font-family: "Satoshi","Satoshi Placeholder",sans-serif;
+              font-size: 13px;
+              font-weight: 500;
+              color: rgba(255,255,255,0.5);
+              line-height: 1.45;
+              letter-spacing: -0.01em;
+            }
+
+            @media (max-width: 768px) {
+              .br-marquee-section::before,
+              .br-marquee-section::after { width: 80px; }
+              .br-mq-card.type-text { width: 280px; }
+              .br-mq-card.type-text-wide { width: 300px; }
+              .br-mq-card.type-video { width: 160px; }
+              .br-mq-card.type-photo { width: 180px; }
+              .br-mq-card.type-stat { width: 160px; }
+              .br-mq-stat-number { font-size: 40px; }
+            }
+          </style>
+
+          <div class="br-marquee-section">
+
+            <!-- ── ROW 1 (scrolls left) ── -->
+            <div class="br-marquee-row row-forward">
+
+              <div class="br-mq-card type-text-wide">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Beauty Rise naprawdę odciążyło mnie z problemów, które borykały mnie od kilku miesięcy czasu. Komunikacja przebiegała w bardzo ludzki i ciepły sposób, bez żadnego skomplikowanego języka jak w innych agencjach"</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Aleksandra W.</div>
+                    <div class="br-mq-role">medycyna estetyczna · Kraków</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="br-mq-card type-video">
+                <video src="opinia-klientki-beauty-rise.mp4" controls playsinline preload="metadata"></video>
+              </div>
+
+              <div class="br-mq-card type-text-wide">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Niespodziewałam się tak dobrych rezultatów z kampanii na facebooku oraz z umiejętności sprzedażowych zespołu. Jestem bardzo zadowolona, serdecznie polecam."</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Joanna K.</div>
+                    <div class="br-mq-role">studio urody · Wrocław</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="br-mq-card type-photo">
+                <img src="opinia-klientki-o-beauty-rise.webp" alt="Klientka BeautyRise">
+              </div>
+
+              <div class="br-mq-card type-text">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Zespół Beauty Rise pomógł mi sprawnie przejść przez problem z kadrą oraz pracownicami w moim salonie. Serdecznie polecam!"</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Marta D.</div>
+                    <div class="br-mq-role">salon premium · Gdańsk</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- === DUPLICATE for seamless loop === -->
+              <div class="br-mq-card type-text-wide">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Beauty Rise naprawdę odciążyło mnie z problemów, które borykały mnie od kilku miesięcy czasu. Komunikacja przebiegała w bardzo ludzki i ciepły sposób, bez żadnego skomplikowanego języka jak w innych agencjach"</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Aleksandra W.</div>
+                    <div class="br-mq-role">medycyna estetyczna · Kraków</div>
+                  </div>
+                </div>
+              </div>
+              <div class="br-mq-card type-video">
+                <video src="opinia-klientki-beauty-rise.mp4" controls playsinline preload="metadata"></video>
+              </div>
+              <div class="br-mq-card type-text-wide">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Niespodziewałam się tak dobrych rezultatów z kampanii na facebooku oraz z umiejętności sprzedażowych zespołu. Jestem bardzo zadowolona, serdecznie polecam."</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Joanna K.</div>
+                    <div class="br-mq-role">studio urody · Wrocław</div>
+                  </div>
+                </div>
+              </div>
+              <div class="br-mq-card type-photo">
+                <img src="opinia-klientki-o-beauty-rise.webp" alt="Klientka BeautyRise">
+              </div>
+              <div class="br-mq-card type-text">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Zespół Beauty Rise pomógł mi sprawnie przejść przez problem z kadrą oraz pracownicami w moim salonie. Serdecznie polecam!"</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Marta D.</div>
+                    <div class="br-mq-role">salon premium · Gdańsk</div>
+                  </div>
+                </div>
+              </div>
+
             </div>
-          </div>
-        </div>
 
-        <div class="br-mq-card type-video">
-          <video src="opinia-klientki-beauty-rise.mp4" controls playsinline preload="metadata"></video>
-        </div>
+            <!-- ── ROW 2 (scrolls right) ── -->
+            <div class="br-marquee-row row-reverse">
 
-        <div class="br-mq-card type-text-wide">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Niespodziewałam się tak dobrych rezultatów z kampanii na facebooku oraz z umiejętności sprzedażowych zespołu. Jestem bardzo zadowolona, serdecznie polecam."</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Joanna K.</div>
-              <div class="br-mq-role">studio urody · Wrocław</div>
+              <div class="br-mq-card type-text">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Zespół Beauty Rise pomógł mi sprawnie przejść przez problem z kadrą oraz pracownicami w moim salonie. Serdecznie polecam!"</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Marta D.</div>
+                    <div class="br-mq-role">salon premium · Gdańsk</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="br-mq-card type-video">
+                <video src="opinia-klientki-agencja-beauty-rise.mp4" controls playsinline preload="metadata"></video>
+              </div>
+
+              <div class="br-mq-card type-text-wide">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Beauty Rise naprawdę odciążyło mnie z problemów, które borykały mnie od kilku miesięcy czasu. Komunikacja przebiegała w bardzo ludzki i ciepły sposób, bez żadnego skomplikowanego języka jak w innych agencjach"</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Aleksandra W.</div>
+                    <div class="br-mq-role">medycyna estetyczna · Kraków</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="br-mq-card type-photo">
+                <img src="opinia-klientki-o-agencji-beauty-rise.webp" alt="Klientka BeautyRise">
+              </div>
+
+              <div class="br-mq-card type-text-wide">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Niespodziewałam się tak dobrych rezultatów z kampanii na facebooku oraz z umiejętności sprzedażowych zespołu. Jestem bardzo zadowolona, serdecznie polecam."</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Joanna K.</div>
+                    <div class="br-mq-role">studio urody · Wrocław</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- === DUPLICATE for seamless loop === -->
+              <div class="br-mq-card type-text">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Zespół Beauty Rise pomógł mi sprawnie przejść przez problem z kadrą oraz pracownicami w moim salonie. Serdecznie polecam!"</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Marta D.</div>
+                    <div class="br-mq-role">salon premium · Gdańsk</div>
+                  </div>
+                </div>
+              </div>
+              <div class="br-mq-card type-video">
+                <video src="opinia-klientki-agencja-beauty-rise.mp4" controls playsinline preload="metadata"></video>
+              </div>
+              <div class="br-mq-card type-text-wide">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Beauty Rise naprawdę odciążyło mnie z problemów, które borykały mnie od kilku miesięcy czasu. Komunikacja przebiegała w bardzo ludzki i ciepły sposób, bez żadnego skomplikowanego języka jak w innych agencjach"</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Aleksandra W.</div>
+                    <div class="br-mq-role">medycyna estetyczna · Kraków</div>
+                  </div>
+                </div>
+              </div>
+              <div class="br-mq-card type-photo">
+                <img src="opinia-klientki-o-agencji-beauty-rise.webp" alt="Klientka BeautyRise">
+              </div>
+              <div class="br-mq-card type-text-wide">
+                <div class="br-mq-stars">
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                  <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
+                </div>
+                <p class="br-mq-quote">"Niespodziewałam się tak dobrych rezultatów z kampanii na facebooku oraz z umiejętności sprzedażowych zespołu. Jestem bardzo zadowolona, serdecznie polecam."</p>
+                <div class="br-mq-author">
+                  <div>
+                    <div class="br-mq-name">Joanna K.</div>
+                    <div class="br-mq-role">studio urody · Wrocław</div>
+                  </div>
+                </div>
+              </div>
+
             </div>
-          </div>
-        </div>
 
-        <div class="br-mq-card type-photo">
-          <img src="opinia-klientki-o-beauty-rise.webp" alt="Klientka BeautyRise">
-          <div class="br-mq-photo-overlay">
-            <div class="br-mq-name">Klientka BeautyRise</div>
-            <div class="br-mq-role">salon kosmetyczny · Warszawa</div>
           </div>
-        </div>
 
-        <div class="br-mq-card type-text">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Przed BeautyRise robiłam posty sama i płaciłam za reklamy bez żadnego skutku. Teraz grafik mam pełny na 3 tygodnie do przodu."</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Anna K.</div>
-              <div class="br-mq-role">salon kosmetyczny · Warszawa</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- duplicate for seamless loop -->
-        <div class="br-mq-card type-text-wide">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Beauty Rise naprawdę odciążyło mnie z problemów, które borykały mnie od kilku miesięcy czasu. Komunikacja przebiegała w bardzo ludzki i ciepły sposób, bez żadnego skomplikowanego języka jak w innych agencjach"</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Aleksandra W.</div>
-              <div class="br-mq-role">medycyna estetyczna · Kraków</div>
-            </div>
-          </div>
-        </div>
-        <div class="br-mq-card type-video">
-          <video src="opinia-klientki-beauty-rise.mp4" controls playsinline preload="metadata"></video>
-        </div>
-        <div class="br-mq-card type-text-wide">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Niespodziewałam się tak dobrych rezultatów z kampanii na facebooku oraz z umiejętności sprzedażowych zespołu. Jestem bardzo zadowolona, serdecznie polecam."</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Joanna K.</div>
-              <div class="br-mq-role">studio urody · Wrocław</div>
-            </div>
-          </div>
-        </div>
-        <div class="br-mq-card type-photo">
-          <img src="opinia-klientki-o-beauty-rise.webp" alt="Klientka BeautyRise">
-          <div class="br-mq-photo-overlay">
-            <div class="br-mq-name">Klientka BeautyRise</div>
-            <div class="br-mq-role">salon kosmetyczny · Warszawa</div>
-          </div>
-        </div>
-        <div class="br-mq-card type-text">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Przed BeautyRise robiłam posty sama i płaciłam za reklamy bez żadnego skutku. Teraz grafik mam pełny na 3 tygodnie do przodu."</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Anna K.</div>
-              <div class="br-mq-role">salon kosmetyczny · Warszawa</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- ROW 2 (scrolls right) -->
-      <div class="br-marquee-row row-reverse">
-
-        <div class="br-mq-card type-text-wide">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Szczerze - byłam sceptyczna. Ale po pierwszym miesiącu liczby mówiły same za siebie. Reklamy rzeczywiście przynoszą klientki."</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Marta W.</div>
-              <div class="br-mq-role">studio urody · Kraków</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="br-mq-card type-video">
-          <video src="opinia-klientki-agencja-beauty-rise.mp4" controls playsinline preload="metadata"></video>
-        </div>
-
-        <div class="br-mq-card type-text-wide">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Zainwestowałam w BeautyRise i w ciągu 2 miesięcy zarobiłam 4x więcej niż zapłaciłam za współpracę. Żałuję że nie zaczęłam wcześniej."</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Joanna P.</div>
-              <div class="br-mq-role">salon paznokci · Wrocław</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="br-mq-card type-photo">
-          <img src="opinia-klientki-o-agencji-beauty-rise.webp" alt="Klientka BeautyRise">
-          <div class="br-mq-photo-overlay">
-            <div class="br-mq-name">Klientka BeautyRise</div>
-            <div class="br-mq-role">salon premium · Gdańsk</div>
-          </div>
-        </div>
-
-        <div class="br-mq-card type-text">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Automatyzacja z opiniami Google to był game changer. W 3 miesiące przeszłam z 3.8 do 4.9 gwiazdki i teraz klientki same mnie znajdują w mapach."</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Karolina S.</div>
-              <div class="br-mq-role">klinika estetyczna · Poznań</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- duplicate for seamless loop -->
-        <div class="br-mq-card type-text-wide">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Szczerze - byłam sceptyczna. Ale po pierwszym miesiącu liczby mówiły same za siebie. Reklamy rzeczywiście przynoszą klientki."</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Marta W.</div>
-              <div class="br-mq-role">studio urody · Kraków</div>
-            </div>
-          </div>
-        </div>
-        <div class="br-mq-card type-video">
-          <video src="opinia-klientki-agencja-beauty-rise.mp4" controls playsinline preload="metadata"></video>
-        </div>
-        <div class="br-mq-card type-text-wide">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Zainwestowałam w BeautyRise i w ciągu 2 miesięcy zarobiłam 4x więcej niż zapłaciłam za współpracę. Żałuję że nie zaczęłam wcześniej."</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Joanna P.</div>
-              <div class="br-mq-role">salon paznokci · Wrocław</div>
-            </div>
-          </div>
-        </div>
-        <div class="br-mq-card type-photo">
-          <img src="opinia-klientki-o-agencji-beauty-rise.webp" alt="Klientka BeautyRise">
-          <div class="br-mq-photo-overlay">
-            <div class="br-mq-name">Klientka BeautyRise</div>
-            <div class="br-mq-role">salon premium · Gdańsk</div>
-          </div>
-        </div>
-        <div class="br-mq-card type-text">
-          <div class="br-mq-stars">
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.44.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-          </div>
-          <p class="br-mq-quote">"Automatyzacja z opiniami Google to był game changer. W 3 miesiące przeszłam z 3.8 do 4.9 gwiazdki i teraz klientki same mnie znajdują w mapach."</p>
-          <div class="br-mq-author">
-            <div>
-              <div class="br-mq-name">Karolina S.</div>
-              <div class="br-mq-role">klinika estetyczna · Poznań</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-    <script>
-      (function() {
-        var section = document.querySelector('.br-marquee-section');
-        if (!section) return;
-        var videos = section.querySelectorAll('video');
-        videos.forEach(function(video) {
-          var row = video.closest('.br-marquee-row');
-          if (!row) return;
-          video.addEventListener('play', function() { row.style.animationPlayState = 'paused'; });
-          video.addEventListener('pause', function() { row.style.animationPlayState = 'running'; });
-          video.addEventListener('ended', function() { row.style.animationPlayState = 'running'; });
-        });
-      })();
-    </script>
+          <script>
+            (function() {
+              var section = document.querySelector('.br-marquee-section');
+              if (!section) return;
+              var videos = section.querySelectorAll('video');
+              videos.forEach(function(video) {
+                var row = video.closest('.br-marquee-row');
+                if (!row) return;
+                video.addEventListener('play', function() {
+                  row.style.animationPlayState = 'paused';
+                });
+                video.addEventListener('pause', function() {
+                  row.style.animationPlayState = 'running';
+                });
+                video.addEventListener('ended', function() {
+                  row.style.animationPlayState = 'running';
+                });
+              });
+            })();
+          </script>
 
   </section>
 
