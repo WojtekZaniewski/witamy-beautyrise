@@ -22,6 +22,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,400&display=swap" rel="stylesheet">
   <style>
+    /* tokens from agency index.html — override framer-style.css */
+    body {
+      --token-205ada91-f441-4a90-9fdc-9854b313f6b4: #0a0a0a;
+      --token-6aa0c73c-cfba-499c-bfa2-5a2a88507ddb: #0a0a0a7a;
+      --token-06641e25-1364-46f2-aed1-5038df5cb108: #0a0a0a;
+      --token-08d61180-855c-4cbe-816c-a0acb16f431d: #0d0d0dcc;
+      --token-195ca2ff-95dc-4d7d-bb9a-c5fb1e041116: #fff;
+      --token-9e43930e-97a2-4cb9-bfb7-3ad05c517cd4: #ffffff8f;
+      --token-b92efc33-3246-4525-adc1-724299866d2f: #ff751f;
+      --token-66d71e62-9b8d-46d3-9a71-3d464751bfc7: #e05a00;
+      --token-b5fdc57f-3969-44a7-a167-0c81954654c1: #fff;
+      --token-251fbce6-ee45-4c90-84b3-4c701dee4eac: #0a0a0a;
+      --token-af7273d3-1fb6-4796-9326-48ad035c57d2: #ffffff1f;
+      --token-b02f73c3-0c77-4fa1-b52e-eca57fd70529: #0d0d0d;
+      --token-79dd3607-ab9b-4584-85f4-6789ddf1615b: #fff;
+      --token-5471e7f5-6bb4-4628-ab95-203ca9bca0a3: #fff;
+      --token-de5008b7-c818-492b-8cb7-a45cdffc2d00: #0d0d0d80;
+      --token-6db52bad-7660-400e-ba7a-693263463de3: #1c1c1c;
+      --token-cddcd727-865f-4fee-b106-55ab38225f65: #000;
+      --token-8e4bf2b8-bbcf-4474-b872-9ecd2d7544a9: #0000008f;
+      --token-56175e9d-fd8b-493c-86fc-ef1e2f5ae9dc: #0000007a;
+      --token-d6a3c655-ce2b-4169-a832-b5c2009569fa: #0000003d;
+      --token-c502547e-d7dd-457f-a498-d0166291a4f0: #0000001f;
+      --token-993fb5e9-e85a-4e5b-ad54-74daaa6d7ab3: #0000001a;
+      --token-20bb4e2e-af00-43a8-9204-d92ed4ca6650: #00000014;
+      --token-a09dd06c-6410-475c-b463-f7e773086f51: #fff;
+      --token-aa7832a1-5075-4d35-835e-0ea574eb2a2b: #ffffff8f;
+      --token-7a2a08aa-a9a6-4d02-9afa-33ab52f73186: #ffffff7a;
+      --token-c1516ea9-01a7-455d-bf15-bec0862142cd: #ffffff3d;
+      --token-4b9c669f-b0c6-4e2b-be1b-af5c76313c76: #ffffff1f;
+      --token-e0618676-35e4-4036-aff0-dc0d96ed47e5: #ffffff1a;
+      --token-8255f912-4b1a-4b67-9088-dea16f69bb15: #ffffff14;
+      --token-cd65e16d-5cd4-4a11-8742-34dba2656cd0: #fff0;
+      --token-f987898e-4596-400f-9c26-963cf3abb404: #111;
+      --token-ff3f88ee-ea2c-4486-8eff-ec86fb74314d: #121212;
+      --token-56b36707-2297-4d08-9da6-bf2f42c2d7ae: #171717;
+      --token-5ac2b635-94bd-42d3-8a57-61d30876f986: #1c1c1c;
+      --token-4c7e587f-47cf-42a2-898d-60a53339c193: #262626;
+      --token-f19f2736-74e7-4e0c-ad23-e2e1bf8665d7: #333;
+      --token-33c107ae-7032-424a-b9d7-f2725bbe99c3: #0f0f0f;
+      --token-e3667eb2-9069-42d8-be86-b068bcec9871: #0d0d0d;
+      --token-44155b16-f3cb-433b-8779-e6f877bcda7b: #fff;
+      --token-3294dda8-8f0a-48e2-90c8-89344355926c: #f9fafb;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
@@ -147,6 +192,29 @@
     }
 
     /* ── FOOTER ── */
+
+    /* hide "Made in Framer" + "Created by Hamza Ehsan" */
+    [data-framer-name="Copyright"] {
+      display: none !important;
+    }
+
+    /* footer logo — replace SVG with BeautyRise logo */
+    footer [data-framer-name="Logo"] .framer-13l49yu {
+      width: 120px !important;
+      height: 120px !important;
+      background: url('logo-agencji-beauty-rise-biale.webp') no-repeat left center !important;
+      background-size: contain !important;
+    }
+
+    footer [data-framer-name="Logo"] .framer-13l49yu .svgContainer,
+    footer [data-framer-name="Logo"] .framer-13l49yu svg {
+      opacity: 0 !important;
+    }
+
+    footer [data-framer-name="Logo"] .framer-17o61tp {
+      display: none !important;
+    }
+
     .framer-KRarM.framer-6u4l7n,
     .framer-KRarM .framer-6u4l7n {
       display: block
@@ -800,8 +868,29 @@
       left: 0
     }
 
-    /* framer-style.css handles all nav CSS; override logo container size */
+    /* nav overrides from agency index.html lines 6981–6998 */
     .framer-r8lWL .framer-flj2dn { width: auto !important; height: auto !important; overflow: visible; }
+    .framer-r8lWL .framer-1rhz3ht {
+      height: 64px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .framer-r8lWL .framer-5ue1r6 {
+      width: 100%;
+      justify-content: space-between;
+    }
+    @media (max-width: 1199.98px) {
+      .framer-r8lWL.framer-1yrhfu6 {
+        width: 100%;
+        padding: 12px 16px;
+      }
+    }
+    @media (max-width: 640px) {
+      .framer-r8lWL .framer-4abdx9 {
+        display: none;
+      }
+    }
 
     /* ── VALUES SECTION ── */
     .values-section {
