@@ -147,137 +147,74 @@
 
     /* ── FOOTER ── */
     .footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px);
-      background-color: rgba(0, 0, 0, 0.56);
-      width: 100%;
-    }
-    .footer__inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 48px 48px 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 48px;
-    }
-    .footer__logo-wrap {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-    .footer__logo-text {
-      font-family: 'Satoshi', sans-serif;
-      font-size: 32px;
-      font-weight: 500;
-      letter-spacing: -0.05em;
-      line-height: 1.1;
-      color: #fff;
-    }
-    .footer__cols {
-      display: flex;
-      gap: 80px;
-      align-items: flex-start;
-    }
-    .footer__col {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 48px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 28px;
     }
-    .footer__col-title {
-      font-family: 'Satoshi', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
+    .footer__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer__logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .footer__logo img {
+      height: 32px;
+      width: auto;
+    }
+    .footer__social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer__social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .footer__social-link:hover {
+      border-color: rgba(255,255,255,0.3);
       color: #fff;
-      letter-spacing: -0.02em;
-      line-height: 1.5;
-      margin-bottom: 4px;
+      background: rgba(255,255,255,0.06);
     }
-    .footer__col a {
-      font-family: 'Satoshi', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.85);
+    .footer__social-link svg { width: 18px; height: 18px; fill: currentColor; }
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 24px;
+    }
+    .footer__copy {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.3);
+    }
+    .footer__links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer__links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .footer__col a:hover { color: #fff; }
-    .footer__col a.footer__link-muted {
-      color: rgba(255, 255, 255, 0.56);
-    }
-    .footer__col a.footer__link-muted:hover { color: rgba(255, 255, 255, 0.85); }
-    .footer__bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 20px 48px;
-      max-width: 100%;
-      text-align: center;
-    }
-    .footer__copy {
-      font-family: 'Satoshi', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      color: rgba(255, 255, 255, 0.4);
-    }
-    @media (max-width: 768px) {
-      .footer__inner {
-        flex-direction: column;
-        padding: 40px 24px 28px;
-        gap: 36px;
-      }
-      .footer__cols {
-        flex-direction: column;
-        gap: 32px;
-      }
-      .footer__bottom {
-        padding: 20px 24px;
-      }
-    }
+    .footer__links a:hover { color: rgba(255,255,255,0.7); }
 
-    /* navbar logo — Beauty Rise */
-    .framer-r8lWL .framer-10gxhl9 {
-      width: auto;
-    }
-
-    .framer-r8lWL .framer-flj2dn {
-      width: auto;
-      height: auto;
-    }
-
-    /* navbar — linki nawigacyjne */
-    .framer-r8lWL .framer-4abdx9 {
-      display: flex;
-    }
-    @media (max-width: 640px) {
-      .framer-r8lWL .framer-4abdx9 {
-        display: none;
-      }
-    }
-
-    /* navbar — pill: stała wysokość + szerokość na wszystkich breakpointach */
-    .framer-r8lWL .framer-1rhz3ht {
-      height: 64px;
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .framer-r8lWL .framer-5ue1r6 {
-      width: 100%;
-      justify-content: space-between;
-    }
-
-    /* navbar — mobile i tablet: wrapper dopasowany do ekranu */
-    @media (max-width: 1199.98px) {
-      .framer-r8lWL.framer-1yrhfu6 {
-        width: 100%;
-        padding: 12px 16px;
-      }
-    }
-
-    /* Framer nav component base styles */
-    .framer-r8lWL.framer-1yrhfu6 {
+    /* ── NAVBAR ── */
+    .navbar {
       position: fixed;
       top: 16px;
       left: 50%;
@@ -285,50 +222,57 @@
       z-index: 100;
       display: flex;
       align-items: center;
-      justify-content: center;
-      width: calc(100% - 32px);
-      max-width: 1080px;
-      padding: 0 16px;
+      gap: 6px;
+      padding: 8px 8px 8px 18px;
+      border-radius: 20px;
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12);
+      white-space: nowrap;
+      overflow: visible;
     }
-    .framer-r8lWL .framer-1rhz3ht {
-      display: flex;
-      align-items: center;
+
+    .navbar__logo {
+      height: 56px;
+      width: auto;
+      margin: -12px 8px -12px 0;
+      display: block;
     }
-    .framer-r8lWL .framer-5ue1r6 {
-      display: flex;
-      align-items: center;
-      padding: 0 12px 0 8px;
-    }
-    .framer-r8lWL .framer-o6o4vw {
-      display: flex;
-      align-items: center;
+
+    .navbar__link {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 12px;
+      transition: color 0.2s, background 0.2s;
     }
-    .framer-r8lWL .framer-4abdx9 {
-      gap: 2px;
+
+    .navbar__link:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
     }
-    .framer-r8lWL .framer-jWlmQ {
-      display: flex;
-      align-items: center;
-      padding: 8px 12px;
+
+    .navbar__cta {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
       text-decoration: none;
-      transition: background 0.2s;
+      padding: 9px 18px;
+      border-radius: 13px;
+      background: #ff751f;
+      box-shadow: 0 2px 12px rgba(255,117,31,0.35);
+      transition: background 0.2s, box-shadow 0.2s;
     }
-    .framer-r8lWL .framer-jWlmQ:hover {
-      background: rgba(255,255,255,0.08) !important;
-    }
-    .framer-r8lWL .framer-SILZC {
-      display: flex;
-      align-items: center;
-      padding: 10px 18px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .framer-r8lWL .framer-SILZC:hover {
-      opacity: 0.9;
-    }
-    .framer-r8lWL .framer-1lhzq7o h6 {
-      margin: 0;
+
+    .navbar__cta:hover {
+      background: #ff8c3a;
+      box-shadow: 0 4px 20px rgba(255,117,31,0.5);
     }
 
     /* ── VALUES SECTION ── */
@@ -853,41 +797,11 @@
 <body>
 
   <!-- NAVBAR -->
-  <div class="framer-oiko23-container" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 32px);max-width:1080px;">
-    <nav class="framer-r8lWL framer-m1KxW framer-1yrhfu6 framer-v-1yrhfu6" data-framer-name="Desktop" style="backdrop-filter:none;background-color:transparent;width:100%;opacity:1;">
-      <div class="framer-1rhz3ht" data-border="true" data-framer-name="Desktop" style="--border-bottom-width:1px;--border-color:rgba(255,255,255,0.1);--border-left-width:1px;--border-right-width:1px;--border-style:solid;--border-top-width:1px;backdrop-filter:blur(32px) saturate(200%) brightness(1.06);-webkit-backdrop-filter:blur(32px) saturate(200%) brightness(1.06);background-image:linear-gradient(140deg,rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.03) 45%,rgba(255,255,255,0.07) 100%);background-color:rgba(10,10,10,0.52);box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.14),inset 0 -1px 0 rgba(0,0,0,0.35),0 0 0 0.5px rgba(255,255,255,0.05);border-radius:100px;opacity:1;">
-        <div class="framer-5ue1r6" data-framer-name="Container" style="opacity:1;">
-          <a class="framer-o6o4vw framer-1asr6i3" data-framer-name="Logo" href="https://beautyrise.pl" style="opacity:1;">
-            <div class="framer-flj2dn" style="flex-shrink:0;opacity:1;">
-              <img src="logo-agencji-beauty-rise-biale.webp" style="height:36px;width:auto;object-fit:contain;display:block;" alt="BeautyRise">
-            </div>
-          </a>
-          <div class="framer-4abdx9" data-framer-name="Links" style="opacity:1;">
-            <a class="framer-jWlmQ framer-kftg1z framer-v-kftg1z framer-147btpa" data-framer-name="Default" style="background-color:rgba(255,255,255,0);border-radius:8px;opacity:1;" href="https://beautyrise.pl/analiza-salonu">
-              <div class="framer-1owxxli" style="opacity:1;">
-                <p style="font-family:'Satoshi','Satoshi Placeholder',sans-serif;font-size:14px;font-weight:500;letter-spacing:-0.02em;line-height:1em;color:rgb(255,255,255);margin:0;" class="framer-text">Analiza salonu</p>
-              </div>
-            </a>
-            <a class="framer-jWlmQ framer-kftg1z framer-v-kftg1z framer-147btpa" data-framer-name="Default" style="background-color:rgba(255,255,255,0);border-radius:8px;opacity:1;" href="https://beautyrise.pl/blog">
-              <div class="framer-1owxxli" style="opacity:1;">
-                <p style="font-family:'Satoshi','Satoshi Placeholder',sans-serif;font-size:14px;font-weight:500;letter-spacing:-0.02em;line-height:1em;color:rgb(255,255,255);margin:0;" class="framer-text">Blog</p>
-              </div>
-            </a>
-            <a class="framer-jWlmQ framer-kftg1z framer-v-kftg1z framer-147btpa" data-framer-name="Default" style="background-color:rgba(255,255,255,0);border-radius:8px;opacity:1;" href="https://beautyrise.pl/kontakt">
-              <div class="framer-1owxxli" style="opacity:1;">
-                <p style="font-family:'Satoshi','Satoshi Placeholder',sans-serif;font-size:14px;font-weight:500;letter-spacing:-0.02em;line-height:1em;color:rgb(255,255,255);margin:0;" class="framer-text">Kontakt</p>
-              </div>
-            </a>
-          </div>
-          <a class="framer-SILZC framer-1hf9nnu framer-v-1r5r3tc framer-1bq6ug3" data-framer-name="Primary Small" style="backdrop-filter:blur(10px);background-color:rgb(255,117,31);border-radius:10px;box-shadow:rgba(255,117,31,0.12) 0px 0px 0px 1px;opacity:1;" href="#formularz">
-            <div class="framer-1lhzq7o" style="justify-content:center;opacity:1;">
-              <h6 style="font-family:'Satoshi','Satoshi Placeholder',sans-serif;font-size:14px;font-weight:500;letter-spacing:-0.02em;line-height:24px;color:rgb(249,250,251);margin:0;" class="framer-text">Umów konsultację</h6>
-            </div>
-          </a>
-        </div>
-      </div>
-    </nav>
-  </div>
+  <nav class="navbar">
+    <img src="logo-agencji-beauty-rise-biale (1).png" alt="BeautyRise" class="navbar__logo">
+    <a href="#info" class="navbar__link">Ważne informacje</a>
+    <a href="#calendly" class="navbar__cta">Umów rozmowę</a>
+  </nav>
 
   <!-- VIDEO SECTION -->
   <section class="hero">
@@ -1742,29 +1656,31 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer__inner">
-      <a class="footer__logo-wrap" href="https://beautyrise.pl">
-        <span class="footer__logo-text">BeautyRise</span>
+    <div class="footer__top">
+      <a href="https://beautyrise.pl" class="footer__logo">
+        <img src="logo.webp" alt="BeautyRise" loading="lazy">
       </a>
-      <div class="footer__cols">
-        <div class="footer__col">
-          <span class="footer__col-title">Kontakt</span>
-          <a href="mailto:kontakt@beautyrise.pl">kontakt@beautyrise.pl</a>
-          <a href="tel:+48534187109">+48 534 187 109</a>
-          <a href="tel:+48510830344">+48 510 830 344</a>
-        </div>
-        <div class="footer__col">
-          <span class="footer__col-title">Szybkie linki</span>
-          <a href="https://beautyrise.pl">Strona główna</a>
-          <a href="https://beautyrise.pl/analiza-salonu">Analiza salonu</a>
-          <a href="https://beautyrise.pl/blog">Blog</a>
-          <a href="https://beautyrise.pl/kontakt">Kontakt</a>
-          <a href="https://beautyrise.pl/polityka-prywatnosci" class="footer__link-muted">Polityka prywatności</a>
-        </div>
+      <div class="footer__social">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/profile.php?id=61552295117586" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/beautyrise.pl/" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://tiktok.com/@beautyrise.pl" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+        </a>
       </div>
     </div>
     <div class="footer__bottom">
       <span class="footer__copy">© 2025 BeautyRise. Wszelkie prawa zastrzeżone.</span>
+      <div class="footer__links">
+        <a href="https://beautyrise.pl/polityka-prywatnosci">Polityka prywatności</a>
+        <a href="https://beautyrise.pl/regulamin">Regulamin</a>
+      </div>
     </div>
   </footer>
 
