@@ -1808,14 +1808,18 @@
               gap: 16px;
               margin-bottom: 16px;
               width: max-content;
+              will-change: transform;
             }
             .br-marquee-row.row-forward {
               animation: marquee-fwd 55s linear infinite;
+              animation-fill-mode: none;
             }
             .br-marquee-row.row-reverse {
               animation: marquee-rev 65s linear infinite;
+              animation-fill-mode: none;
             }
-            .br-marquee-row:hover {
+            .br-marquee-row:hover,
+            .br-marquee-row.video-playing {
               animation-play-state: paused;
             }
 
@@ -2073,8 +2077,8 @@
                 </div>
               </div>
 
-              <div class="br-mq-card type-video">
-                <video src="opinia-klientki-o-beauty-rise.mp4" controls playsinline preload="metadata"></video>
+              <div class="br-mq-card type-photo">
+                <img src="opinia-klientki-o-beauty-rise.webp" alt="Klientka BeautyRise">
               </div>
 
               <div class="br-mq-card type-text">
@@ -2130,8 +2134,8 @@
                   </div>
                 </div>
               </div>
-              <div class="br-mq-card type-video">
-                <video src="opinia-klientki-o-beauty-rise.mp4" controls playsinline preload="metadata"></video>
+              <div class="br-mq-card type-photo">
+                <img src="opinia-klientki-o-beauty-rise.webp" alt="Klientka BeautyRise">
               </div>
               <div class="br-mq-card type-text">
                 <div class="br-mq-stars">
@@ -2193,8 +2197,8 @@
                 </div>
               </div>
 
-              <div class="br-mq-card type-photo">
-                <img src="opinia-klientki-o-agencji-beauty-rise.webp" alt="Klientka BeautyRise">
+              <div class="br-mq-card type-video">
+                <video src="opinia-klientki-o-beauty-rise.mp4" controls playsinline preload="metadata"></video>
               </div>
 
               <div class="br-mq-card type-text-wide">
@@ -2250,8 +2254,8 @@
                   </div>
                 </div>
               </div>
-              <div class="br-mq-card type-photo">
-                <img src="opinia-klientki-o-agencji-beauty-rise.webp" alt="Klientka BeautyRise">
+              <div class="br-mq-card type-video">
+                <video src="opinia-klientki-o-beauty-rise.mp4" controls playsinline preload="metadata"></video>
               </div>
               <div class="br-mq-card type-text-wide">
                 <div class="br-mq-stars">
@@ -2283,13 +2287,13 @@
                 var row = video.closest('.br-marquee-row');
                 if (!row) return;
                 video.addEventListener('play', function() {
-                  row.style.animationPlayState = 'paused';
+                  row.classList.add('video-playing');
                 });
                 video.addEventListener('pause', function() {
-                  row.style.animationPlayState = 'running';
+                  row.classList.remove('video-playing');
                 });
                 video.addEventListener('ended', function() {
-                  row.style.animationPlayState = 'running';
+                  row.classList.remove('video-playing');
                 });
               });
             })();
