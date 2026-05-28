@@ -1466,11 +1466,13 @@
     }
 
     @media (max-width: 600px) {
-      .hero { padding: 40px 20px 0; }
+      .hero { padding: 16px 20px 0; min-height: auto; }
       .navbar { padding: 7px 7px 7px 14px; top: 10px; }
       .navbar__logo { height: 44px; }
       .navbar__cta { font-size: 13px; padding: 8px 14px; }
-      .calendly-section { padding: 40px 20px 60px; }
+      .calendly-section { padding: 40px 0 40px; }
+      .calendly-section__inner { padding: 0 16px; }
+      .calendly-section iframe { height: 580px !important; }
 
       .sec { padding: 64px 20px; }
       .stages-content { padding: 48px 20px 40px; }
