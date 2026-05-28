@@ -1454,6 +1454,9 @@
     @media (max-width: 768px) {
       .problem-grid, .feature-inner, .feature-inner--rev,
       .services-grid, .comparison-grid { grid-template-columns: 1fr; direction: ltr; }
+      .feature-section--content .feature-inner--rev { display: flex; flex-direction: column; }
+      .feature-section--content .feature-inner--rev .feature-text { order: 1; }
+      .feature-section--content .feature-inner--rev .feature-mock { order: 2; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .stats-strip__grid { grid-template-columns: 1fr; gap: 32px; }
       .vs-badge { display: none; }
